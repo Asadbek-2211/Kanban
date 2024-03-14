@@ -49,16 +49,16 @@
     </el-row>
 </template>
 <script setup>
-import { ref } from 'vue'
+import { ref,onMounted } from 'vue'
 import { Search } from '@element-plus/icons-vue'
 import  TaskColomen from '@/components/TaskColumen.vue'
 import { VueDraggable } from 'vue-draggable-plus'
-// import { supabase } from "@/lib/supabase.Client";
+import { tasksStore } from '@/store'
 const input4 = ref('')
 const cols = ['started','going','completed']
-const getTasks = async () => {
- 
-}
+onMounted(async () => {
+  tasksStore.getTasks
+})
 </script>
 <style>
 .el-input__wrapper {

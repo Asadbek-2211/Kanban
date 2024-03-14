@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { supabase } from "@/lib/supabaseClient";
+import { supabase } from "@/lib/supabase.Client";
  export const tasksStore = defineStore('index',{
     state: () => {
         return {
@@ -7,10 +7,10 @@ import { supabase } from "@/lib/supabaseClient";
         }
     },
     actions:{
-        getTasks(state){
+        getTasks(){
              supabase.from("tasks").select("*").then(res => {
-                state.tasks = res.data
-                console.log(res.data);
+                tasks = res.data
+                
          })
         }
     }

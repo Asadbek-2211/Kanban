@@ -15,7 +15,7 @@
         </template>
       </el-input>
     </div>
-    <div class="flex items-center gap-6 pl-[600px]">
+    <div class="flex items-center gap-6">
         <button class="text-[#999]">
         <i class="fa-solid fa-location-dot"></i>
       </button>
@@ -30,17 +30,35 @@
      </div>
     </div>
     </div>
-    <div class="bg-[#FCFBFC] h-[670px] mt-4 rounded-2xl p-5">
+    <el-row :gutter="20">
+      <el-col :span="18">
+        <div class="bg-[#FCFBFC] h-[670px] mt-4 rounded-2xl p-5">
         <div class="flex justify-between">
             <h2 class="text-2xl font-bold">Projects</h2>
             <button class="bg-[#754BE5] p-2 w-[150px] rounded-2xl text-[#eee]">Create Project</button>
         </div>
+        <div >
+          <VueDraggable class="flex gap-5 justify-between">
+            <div class="w-[30%]" v-for="col in cols" :key="col">
+            <TaskColomen :colName="col"/>
+          </div>
+          </VueDraggable>
+        </div>
     </div> 
+      </el-col>
+    </el-row>
 </template>
 <script setup>
 import { ref } from 'vue'
 import { Search } from '@element-plus/icons-vue'
+import  TaskColomen from '@/components/TaskColumen.vue'
+import { VueDraggable } from 'vue-draggable-plus'
+// import { supabase } from "@/lib/supabase.Client";
 const input4 = ref('')
+const cols = ['started','going','completed']
+const getTasks = async () => {
+ 
+}
 </script>
 <style>
 .el-input__wrapper {

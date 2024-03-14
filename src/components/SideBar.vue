@@ -25,13 +25,14 @@
     </RouterLink>
 </div>
 </div>
-<button class="text-white flex justify-center pl-6 mt-[200px]">
+ <button class="text-white flex justify-center pl-6 mt-[200px]">
  <i class="fa-solid fa-arrow-right-from-bracket"></i>
 </button>
   </div>
 </template>
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
+
 </script>
 <style>
 .sideBar {

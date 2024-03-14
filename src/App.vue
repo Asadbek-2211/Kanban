@@ -3,14 +3,12 @@ import { RouterLink, RouterView } from 'vue-router'
 import SideBar from './components/SideBar.vue';
 </script>
 <template>
-  <header>
     <div class="flex items-start">
       <SideBar/>
-     <div class="mt-5 px-6">
+     <div class="mt-5 px-6 flex-1">
       <RouterView />
      </div>
     </div>
-  </header>
 </template>
 <style>
 body {

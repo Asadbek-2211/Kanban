@@ -30,7 +30,7 @@
           <span class="text-sm text-[#999] mt-2">TOTAL</span>
           <div class="flex justify-start items-center gap-2">
             <div class="w-[4px] h-[22px] rounded-xl bg-[#0E5FFF] "></div>
-            <p class="font-bold">{{ name }}</p>
+            <p class="font-bold">{{ store.tasks.length }}</p>
           </div>
          </div>
         </div>
@@ -39,7 +39,7 @@
             <span class="text-sm text-[#999] mt-2">COMPLETED</span>
            <div class="flex justify-start items-start gap-2">
             <div  class="w-[4px] h-[22px] rounded-xl bg-[#F07807]"></div>
-            <p class="font-bold">{{  }}</p>
+            <p class="font-bold">{{ store.filterTasks("completed").length }}</p>
            </div>
           </div>
         </div>
@@ -50,7 +50,7 @@
           <span class="text-sm text-[#999] mt-2">IN PROGRESS</span>
         <div class="flex justify-start items-center gap-2">
          <div  class="w-[4px] h-[22px] rounded-xl bg-[#F83AFF]"></div>
-            <p class="font-bold">{{  }}</p>
+            <p class="font-bold">{{ store.filterTasks("going").length }}</p>
         </div>
         </div>
         </div>
@@ -59,7 +59,7 @@
           <span class="text-sm text-[#999] mt-2">WAITING</span>
         <div class="flex justify-start items-center gap-2">
           <div class="w-[4px] h-[22px] rounded-xl bg-[#7349eb]"></div>
-          <p class="font-bold">{{ 24 }}</p>
+          <p class="font-bold">{{ store.filterTasks("started").length }}</p>
         </div>
         </div>
         </div>
@@ -102,6 +102,6 @@
 </template>
 <script setup>
 import { tasksStore } from "@/store";
-const taskStore = tasksStore()
+const store = tasksStore()
 const props = defineProps(["name","comment","rate","id"])
 </script>

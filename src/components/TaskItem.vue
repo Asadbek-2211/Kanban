@@ -1,5 +1,5 @@
 <template>
-  <div @mouseover="saveStidentId"
+  <div 
     class="p-3 rounded-xl overflow-y-auto bg-white"
     style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px"
   >
@@ -74,7 +74,5 @@ const deleteTask = async () => {
   store.getTasks()
  })
 }
-const saveStidentId = () => {
-  store.setDragStuId(props.id)
-}
+
 </script>

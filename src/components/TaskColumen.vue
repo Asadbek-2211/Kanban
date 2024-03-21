@@ -24,7 +24,7 @@
       </button>
     </div>
     <VueDraggable>
-      <div v-for="task in store.filterTasks(colName).reverse()" :key="task.id">
+      <div v-for="task in store.filterTasks(colName).reverse()" :key="task.id" @dragstart="saveStidentId(task.id)">
         <TaskItem
           :name="task.name"
           :comment="task.comment"
@@ -71,6 +71,9 @@ const updateTaskStatus = async () => {
   .then(()=> {
     store.getTasks()
   })
+}
+const saveStidentId = (id) => {
+  store.setDragStuId(id)
 }
 </script>
 <style></style>

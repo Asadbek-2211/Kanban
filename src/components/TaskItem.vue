@@ -1,5 +1,5 @@
 <template>
-  <div
+  <div @mouseover="saveStidentId"
     class="p-3 rounded-xl overflow-y-auto bg-white"
     style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px"
   >
@@ -17,9 +17,12 @@
       >
         {{ name }}
       </div>
-      <button>
+      <button @click="deleteAdd = !deleteAdd">
         <i class="fa-solid fa-ellipsis"></i>
       </button>
+      <div class="w-15 p-2 bg-[#eee]" v-if="deleteAdd">
+        <button class="bg-indigo-500 rounded-lg p-2 text-white" @click="deleteTask">Delete</button>
+      </div>
     </div>
     <p class="h-[40px] overflow-y-auto">{{ comment }}</p>
     <div class="text-end">{{ rate }}%</div>
@@ -57,5 +60,21 @@
   </div>
 </template>
 <script setup>
+import { supabase } from '@/lib/supabaseClient';
+import { tasksStore } from "@/store";
+import { ref } from 'vue';
+const store = tasksStore();
 const props = defineProps(["name", "comment", "rate", "id"]);
+const deleteAdd = ref(false)
+const deleteTask = async () => {
+ await supabase
+ .from("tasks")
+ .delete()
+ .eq("id", props.id).then(() => {
+  store.getTasks()
+ })
+}
+const saveStidentId = () => {
+  store.setDragStuId(props.id)
+}
 </script>

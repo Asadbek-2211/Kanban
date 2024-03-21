@@ -4,6 +4,7 @@ export const tasksStore = defineStore("index", {
   state: () => {
     return {
       tasks: [],
+      dragStId: null
     };
   },
   actions: {
@@ -14,6 +15,9 @@ export const tasksStore = defineStore("index", {
         .then((res) => {
           this.tasks = res.data;
         });
+    },
+    setDragStuId(id) {
+      this.dragStId = id
     },
   },
   getters: {
